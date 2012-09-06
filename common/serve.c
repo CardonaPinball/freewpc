@@ -195,6 +195,8 @@ static void set_ball_count_task (void)
  */
 void set_ball_count (U8 count)
 {
+	if (count <= live_balls)
+		return;
 	live_balls_wanted = count;
 	task_recreate_gid (GID_SET_BALL_COUNT, set_ball_count_task);
 }
@@ -248,6 +250,9 @@ CALLSET_ENTRY (serve, dev_trough_kick_success)
  */
 CALLSET_ENTRY (serve, sw_shooter)
 {
+#ifdef MACHINE_SHOOTER_SWITCH
+	if (!switch_poll_logical (MACHINE_SHOOTER_SWITCH))
+		return;
 	ball_search_timer_reset ();
 	if (valid_playfield
 		&& !tournament_mode_enabled
@@ -258,6 +263,7 @@ CALLSET_ENTRY (serve, sw_shooter)
 		multiball. */
 		launch_ball ();
 	}
+#endif
 }
 
 

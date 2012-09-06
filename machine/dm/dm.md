@@ -187,7 +187,7 @@ define MACHINE_END_GAME_MUSIC 		MUS_END_GAME
 24: Always Closed, noplay
 25: Claw Position 1, opto, noscore, noplay
 26: Claw Position 2, opto, noscore, noplay
-27: Shooter Lane, shooter, noscore, noplay
+27: Shooter Lane, edge, shooter, noscore, noplay
 28: Not Used, noplay
 31: Trough 1, noscore, noplay, opto
 32: Trough 2, noscore, noplay, opto
